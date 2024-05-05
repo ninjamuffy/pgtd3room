@@ -1,0 +1,21 @@
+local args = {
+    [1] = {
+        ["Difficulty"] = 1,
+        ["Modifier1"] = "BulletSponge",
+        ["Code"] = "yooi9s",
+        ["Map"] = "Inside The Code",
+        ["ModNames"] = "Bullet Sponges + Stronger Enemies",
+        ["Modifier2"] = "EnemyHealth",
+        ["Modifier3"] = ""
+    }
+}
+
+game:GetService("ReplicatedStorage").EventMatchmakingRemotes.createparty:FireServer(unpack(args))
+wait(5)
+
+local args = {
+    [1] = game:GetService("ReplicatedStorage").EventParties:FindFirstChild("")
+}
+
+game:GetService("ReplicatedStorage").EventMatchmakingRemotes.start:FireServer(unpack(args))
+
