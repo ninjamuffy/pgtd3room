@@ -16,10 +16,10 @@ game:GetService("ReplicatedStorage").EventMatchmakingRemotes.createparty:FireSer
 
 -- Wait for a short period to allow the server to process the request
 wait(1)
-
--- Start the created party
+-- Find the party object
 local party = game:GetService("ReplicatedStorage").EventParties:FindFirstChild("")
 if party then
+    -- Prepare arguments for the start event
     local startArgs = {
         [1] = party
     }
