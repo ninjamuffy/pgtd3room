@@ -1,4 +1,5 @@
-local args = {
+-- Create a party with specified arguments
+local createArgs = {
     [1] = {
         ["Difficulty"] = 1,
         ["Modifier1"] = "BulletSponge",
@@ -10,10 +11,21 @@ local args = {
     }
 }
 
-game:GetService("ReplicatedStorage").EventMatchmakingRemotes.createparty:FireServer(unpack(args))
+-- Fire the createparty event
+game:GetService("ReplicatedStorage").EventMatchmakingRemotes.createparty:FireServer(unpack(createArgs))
 
-local args = {
-    [1] = game:GetService("ReplicatedStorage").EventParties:FindFirstChild("")
-}
+-- Wait for a short period to allow the server to process the request
+wait(1)
 
-game:GetService("ReplicatedStorage").EventMatchmakingRemotes.start:FireServer(unpack(args))
+-- Start the created party
+local party = game:GetService("ReplicatedStorage").EventParties:FindFirstChild("")
+if party then
+    local startArgs = {
+        [1] = party
+    }
+
+    -- Fire the start event
+    game:GetService("ReplicatedStorage").EventMatchmakingRemotes.start:FireServer(unpack(startArgs))
+else
+    warn("Party not found.")
+end
